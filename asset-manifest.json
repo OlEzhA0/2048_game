@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/2048_game/static/css/main.c8c27ba6.chunk.css",
+    "main.js": "/2048_game/static/js/main.5fd00267.chunk.js",
+    "main.js.map": "/2048_game/static/js/main.5fd00267.chunk.js.map",
+    "runtime-main.js": "/2048_game/static/js/runtime-main.4e5fb2d0.js",
+    "runtime-main.js.map": "/2048_game/static/js/runtime-main.4e5fb2d0.js.map",
+    "static/js/2.794b8d49.chunk.js": "/2048_game/static/js/2.794b8d49.chunk.js",
+    "static/js/2.794b8d49.chunk.js.map": "/2048_game/static/js/2.794b8d49.chunk.js.map",
+    "index.html": "/2048_game/index.html",
+    "precache-manifest.32c1b1adc18abd7e55e189a276479f03.js": "/2048_game/precache-manifest.32c1b1adc18abd7e55e189a276479f03.js",
+    "service-worker.js": "/2048_game/service-worker.js",
+    "static/css/main.c8c27ba6.chunk.css.map": "/2048_game/static/css/main.c8c27ba6.chunk.css.map",
+    "static/js/2.794b8d49.chunk.js.LICENSE.txt": "/2048_game/static/js/2.794b8d49.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/2048_game/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e5fb2d0.js",
+    "static/js/2.794b8d49.chunk.js",
+    "static/css/main.c8c27ba6.chunk.css",
+    "static/js/main.5fd00267.chunk.js"
+  ]
+}
