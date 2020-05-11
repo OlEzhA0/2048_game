@@ -5,14 +5,20 @@ class DrawField extends React.PureComponent {
     const { gameField } = this.props;
 
     return (
-      gameField.map(row => row.map((cell, i) => (
-        <div
-          className={cell === 0 ? 'cell' : `cell__${cell} cell`}
-          key={i}
-        >
-          {cell === 0 ? '' : cell}
-        </div>
-      ))
+      gameField.map(row => row.map((cell, i) => {
+        return (
+          <div
+            className={cell === 0
+              ? 'cell'
+              : typeof cell === 'string' && cell.includes('new__item')
+                ? `cell__${parseFloat(cell)} new__item`
+                : `cell__${parseFloat(cell)} cell`}
+            key={i}
+          >
+            {cell === 0 ? '' : parseFloat(cell)}
+          </div>
+        )
+      })
       )
     )
   }

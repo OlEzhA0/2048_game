@@ -35,6 +35,15 @@ class App extends React.Component {
   }
 
   checkForOverGame = () => {
+    const { gameField } = this.state;
+    for (let i = 0; i < gameField; i++) {
+      for (let j = 0; j < gameField[i]; j++) {
+        if (gameField[i][j] === 0) {
+          return;
+        }
+      }
+    }
+
     const moveDown = this.canMoveDown(true);
     const moveUp = this.canMoveUp(true);
     const moveLeft = this.canMoveLeft(true);
@@ -64,8 +73,13 @@ class App extends React.Component {
     const probability = [2, 4, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 8, 2];
     const probIdx = (Math.random() * (14 - 0) + 0).toFixed(0);
     const newField = [...this.state.gameField];
-    newField[x][y] = probability[probIdx];
+    newField[x][y] = `${probability[probIdx]} new__item`;
     this.setState(() => ({ gameField: newField }));
+
+    setTimeout(() => {
+      newField[x][y] = probability[probIdx];
+      this.setState(() => ({ gameField: newField }));
+    }, 0)
     this.checkForOverGame();
   }
 
@@ -153,6 +167,7 @@ class App extends React.Component {
       }
       currentField.push(row)
     }
+
     this.setState(() => ({ gameField: currentField, arrow: '' }), () => this.newItemPosition());
   }
 
@@ -520,6 +535,7 @@ class App extends React.Component {
             </span>
           </h1>
         </div>
+
         <div
           className="field"
           style={overGame ? { zIndex: "-2" } : { zIndex: "0" }}
