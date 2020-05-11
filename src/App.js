@@ -36,6 +36,7 @@ class App extends React.Component {
 
   checkForOverGame = () => {
     const { gameField } = this.state;
+    console.log(gameField);
     for (let i = 0; i < gameField; i++) {
       for (let j = 0; j < gameField[i]; j++) {
         if (gameField[i][j] === 0) {
@@ -73,13 +74,9 @@ class App extends React.Component {
     const probability = [2, 4, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 8, 2];
     const probIdx = (Math.random() * (14 - 0) + 0).toFixed(0);
     const newField = [...this.state.gameField];
-    newField[x][y] = `${probability[probIdx]} new__item`;
+    newField[x][y] = probability[probIdx];
     this.setState(() => ({ gameField: newField }));
 
-    setTimeout(() => {
-      newField[x][y] = probability[probIdx];
-      this.setState(() => ({ gameField: newField }));
-    }, 0)
     this.checkForOverGame();
   }
 
