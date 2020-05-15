@@ -35,8 +35,8 @@ class App extends React.Component {
   }
 
   checkForOverGame = () => {
+    this.setState({ overGame: false });
     const { gameField } = this.state;
-    console.log(gameField);
     for (let i = 0; i < gameField; i++) {
       for (let j = 0; j < gameField[i]; j++) {
         if (gameField[i][j] === 0) {
@@ -46,13 +46,30 @@ class App extends React.Component {
     }
 
     const moveDown = this.canMoveDown(true);
-    const moveUp = this.canMoveUp(true);
-    const moveLeft = this.canMoveLeft(true);
-    const moveRight = this.canMoveUp(true);
 
-    if (!moveDown && !moveUp && !moveLeft && !moveRight) {
-      this.setState({ overGame: true });
+    if (moveDown) {
+      return;
     }
+
+    const moveUp = this.canMoveUp(true);
+
+    if (moveUp) {
+      return;
+    }
+
+    const moveLeft = this.canMoveLeft(true);
+
+    if (moveLeft) {
+      return;
+    }
+
+    const moveRight = this.canMoveRight(true);
+
+    if (moveRight) {
+      return;
+    }
+
+    this.setState({ overGame: true });
   }
 
   newItemPosition = () => {
@@ -82,24 +99,16 @@ class App extends React.Component {
 
   canMoveRight = (check) => {
     const { gameField } = this.state;
-    let x = null;
-    let y = null;
     let canMove = false;
 
     for (let i = 0; i < gameField.length; i++) {
       for (let j = 0; j < gameField[i].length; j++) {
         if (gameField[i][j] !== 0) {
-          x = i;
-          y = j;
-          break;
-        }
-      }
-
-      if (typeof x === 'number' && typeof y === 'number') {
-        for (let z = y + 1; z < gameField[x].length; z++) {
-          if (gameField[x][z] === 0) {
-            canMove = true;
-            break;
+          for (let z = j + 1; z < gameField[i].length; z++) {
+            if (gameField[i][z] === 0) {
+              canMove = true;
+              break;
+            }
           }
         }
       }
@@ -117,6 +126,7 @@ class App extends React.Component {
     }
 
     if (check) {
+      console.log('can move right', canMove);
       return canMove;
     } else if (canMove && !check) {
       this.rightDirection();
@@ -515,6 +525,8 @@ class App extends React.Component {
     if (arrow && !overGame) {
       this.chooseDirection(arrow);
     }
+
+    console.log('overgame', overGame);
 
     return (
       <>
